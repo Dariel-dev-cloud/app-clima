@@ -2,6 +2,7 @@
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Card from './Card'
 import { getWeather } from '../../api'
+import WeatherIcon from '../WeatherIcon'
 
 export default function DailyForecat() {
      const {data} = useSuspenseQuery({
@@ -17,8 +18,7 @@ export default function DailyForecat() {
           <p className='w-9' >{new Date(day.dt * 1000).toLocaleDateString(undefined,{
             weekday:'short',
           })}</p>
-          <img className='size-8'
-           src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`} alt='tiempo icon' />
+         <WeatherIcon src={day.weather[0].icon}/>
           <p>{ Math.round(day.temp.day)}°F</p>
           <p className='text-gray-500/75 ' >{ Math.round(day.temp.min)}°F</p>
           <p className='text-gray-500/75 ' >{ Math.round(day.temp.max)}°F</p>
