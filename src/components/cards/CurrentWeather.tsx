@@ -3,14 +3,17 @@ import { getWeather } from '../../api'
 import { useSuspenseQuery } from '@tanstack/react-query'
 import Card from './Card'
 import WeatherIcon from '../WeatherIcon'
+import type { Coords } from '../../types'
 
+type Props = {
+    coords: Coords
+}
 
-
-export default function CurrentWeather() {
+export default function CurrentWeather({coords}:Props) {
         const {data} = useSuspenseQuery({
-    queryKey: ['weather'],
-    queryFn: () => getWeather({lat:10, lon:25})
-  })
+        queryKey: ['weather',coords],
+         queryFn: () => getWeather({lat:coords.lat, lon:coords.lon})
+        })
 
   return (
     <Card 
@@ -18,7 +21,7 @@ export default function CurrentWeather() {
     childrenClassName='flex flex-col items-center gap-6'>
         <div className='flex flex-col gap-2 items-center'>
             <h2 className='text-6xl font-semibold text-center'>
-             {Math.round(data.current.temp)}°F</h2>
+             {Math.round(data.current.temp)}°C</h2>
              <WeatherIcon className='size-14' src={data.current.weather[0].icon}/>
              <h3 className='capitalize text-xl'>
                 {data.current.weather[0].description}</h3>
@@ -37,7 +40,7 @@ export default function CurrentWeather() {
             
             <div className='flex flex-col items-center gap-2'>
                 <p className='text-gray-500'>Sensación Térmica</p>
-                <p>{Math.round(data.current.feels_like)}°F</p>
+                <p>{Math.round(data.current.feels_like)}°C</p>
             </div>
 
             <div className='flex flex-col items-center gap-2'>
