@@ -1,12 +1,14 @@
+import clsx from "clsx"
 
 
 type Props = {
-  src: string
+  src: string,
+  className?: string
 }
 
-function WeatherIcon({src}: Props) {
+function WeatherIcon({src, className}: Props) {
   return (
-     <img className='size-8'
+     <img className={clsx('size-8', className)}
     src={`https://openweathermap.org/img/wn/${src}.png`} alt='tiempo icon' />
   )
 }
