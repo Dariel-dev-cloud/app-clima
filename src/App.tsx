@@ -1,4 +1,5 @@
 
+import AdditionalInfo from "./components/cards/AdditionalInfo"
 import CurrentWeather from "./components/cards/CurrentWeather"
 import DailyForecat from "./components/cards/DailyForecat"
 import HourlyForecast from "./components/cards/HourlyForecast"
@@ -13,6 +14,7 @@ function App() {
     <CurrentWeather/>
     <HourlyForecast/>
     <DailyForecat/>
+    <AdditionalInfo/>
     </div>
       </>
   ) 
