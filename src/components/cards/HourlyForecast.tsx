@@ -17,7 +17,7 @@ export default function HourlyForecast({coords}:Props) {
   return (
     <Card childrenClassName="flex gap-6 overflow-x-scroll" title="Pronóstico por hora (48 horas)">
          {data.hourly.map((hour) => (
-            <div className="flex flex-col gap-2 items-center p-2   " >
+            <div key={hour.dt} className="flex flex-col gap-2 items-center p-2   " >
                <p className="whitespace-nowrap" >{new Date(hour.dt * 1000).toLocaleTimeString('es-ES', { 
                   hour: 'numeric', 
                   minute: '2-digit',
