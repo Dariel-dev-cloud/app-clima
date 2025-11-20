@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
 
 const API_KEY = import.meta.env.VITE_API_KEY
+const TILE_LAYER = import.meta.env.VITE_TILE_LAYER
 
 type Props = {
  coords: Coords
@@ -54,7 +55,7 @@ function MapTileLayer(){
 
   useEffect(() => {
    
-    const tileLayer = new MaptilerLayer({style:'basic-dark',apiKey:'DpIMQeoGHT5W0HZuQt5v'})
+    const tileLayer = new MaptilerLayer({style:'basic-dark',apiKey:TILE_LAYER})
     tileLayer.addTo(map)
 
     return () => {map.removeLayer(tileLayer)}
