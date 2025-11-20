@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { Suspense, useState } from "react"
 import AdditionalInfo from "./components/cards/AdditionalInfo"
 import CurrentWeather from "./components/cards/CurrentWeather"
 import DailyForecat from "./components/cards/DailyForecat"
@@ -10,6 +10,10 @@ import { useQuery } from "@tanstack/react-query"
 import { getGeocode } from "./api"
 import MapTypeDropdown from "./components/dropdowns/MapTypeDropdown"
 import MapLegend from "./components/MapLegend"
+import CurrentSkeleton from "./components/skeletons/CurrentSkeleton"
+import DailySkeleton from "./components/skeletons/DailySkeleton"
+import HourlySkeleton from "./components/skeletons/HourlySkeleton"
+import AditionalInfoSkeleton from "./components/skeletons/AditionalInfoSkeleton"
 
 
 function App() {
@@ -50,10 +54,21 @@ function App() {
        <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
        <MapLegend mapType={mapType} />
     </div>
-    <CurrentWeather coords={coords} />
-    <HourlyForecast coords={coords} />
-    <DailyForecat   coords={coords} />
-    <AdditionalInfo coords={coords} />
+      <Suspense fallback={<CurrentSkeleton />}>
+          <CurrentWeather coords={coords} />
+      </Suspense>
+
+      <Suspense fallback={<HourlySkeleton />}>
+          <HourlyForecast coords={coords} />
+      </Suspense>
+
+      <Suspense fallback={<DailySkeleton />}>
+          <DailyForecat   coords={coords} />
+      </Suspense>
+
+      <Suspense fallback={<AditionalInfoSkeleton />}>
+          <AdditionalInfo coords={coords} />
+      </Suspense>
     </div>
       </>
   ) 
