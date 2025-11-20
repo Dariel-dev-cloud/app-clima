@@ -14,6 +14,7 @@ import CurrentSkeleton from "./components/skeletons/CurrentSkeleton"
 import DailySkeleton from "./components/skeletons/DailySkeleton"
 import HourlySkeleton from "./components/skeletons/HourlySkeleton"
 import AditionalInfoSkeleton from "./components/skeletons/AditionalInfoSkeleton"
+import SidePanel from "./components/SidePanel"
 
 
 function App() {
@@ -70,6 +71,7 @@ function App() {
           <AdditionalInfo coords={coords} />
       </Suspense>
     </div>
+    <SidePanel coords={coords} />
       </>
   ) 
 }
