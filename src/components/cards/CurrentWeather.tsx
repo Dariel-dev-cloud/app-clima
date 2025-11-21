@@ -17,7 +17,8 @@ export default function CurrentWeather({coords}:Props) {
 
   return (
     <Card 
-    title="Tiempo Actual" 
+    title="Tiempo Actual"
+    className='md:pb-11'
     childrenClassName='flex flex-col items-center gap-6'>
         <div className='flex flex-col gap-2 items-center'>
             <h2 className='text-6xl font-semibold text-center'>
