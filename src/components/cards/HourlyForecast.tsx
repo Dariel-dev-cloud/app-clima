@@ -15,16 +15,16 @@ export default function HourlyForecast({coords}:Props) {
         })
 
   return (
-    <Card childrenClassName="flex gap-6 overflow-x-scroll" title="Pronóstico por hora (48 horas)">
+    <Card childrenClassName="flex gap-6 2xl:justify-between overflow-x-scroll" title="Pronóstico por hora (48 horas)">
          {data.hourly.map((hour) => (
             <div key={hour.dt} className="flex flex-col gap-2 items-center p-2   " >
-               <p className="whitespace-nowrap" >{new Date(hour.dt * 1000).toLocaleTimeString('es-ES', { 
+               <p className="whitespace-nowrap 2xl:scale-110" >{new Date(hour.dt * 1000).toLocaleTimeString('es-ES', { 
                   hour: 'numeric', 
                   minute: '2-digit',
                   hour12: true 
                })}</p>
-               <WeatherIcon src={hour.weather[0].icon}/>
-               <p>{Math.round(hour.temp)}°C</p>
+               <WeatherIcon className="2xl:size-10" src={hour.weather[0].icon}/>
+               <p className="2xl:scale-110">{Math.round(hour.temp)}°C</p>
             </div>
          ))}
     </Card>

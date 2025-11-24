@@ -5,7 +5,7 @@ function CurrentSkeleton() {
   return (
      <Card 
         title="Tiempo Actual" 
-        childrenClassName='flex flex-col items-center gap-6'>
+        childrenClassName='flex flex-col items-center gap-6 2xl:justify-between'>
             <div className='flex flex-col gap-2 items-center'>
                <Skeleton className="w-32 h-16" />
                <Skeleton className="size-14 rounded-full" />

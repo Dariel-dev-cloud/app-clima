@@ -6,7 +6,7 @@ import { Skeleton } from "../ui/skeleton"
 
 export default function AditionalInfoSkeleton() {
   return (
-    <Card title='Información meteorológica adicional' childrenClassName='flex flex-col gap-8' >
+    <Card title='Información meteorológica adicional' childrenClassName='grid grid-cols-1 md:grid-cols-2 gap-8' >
            {Array.from({length:6}).map((_, index) => (
             <div key={index} className='flex justify-between' >
               <div className='flex gap-4'>

@@ -16,6 +16,7 @@ import HourlySkeleton from "./components/skeletons/HourlySkeleton"
 import AditionalInfoSkeleton from "./components/skeletons/AditionalInfoSkeleton"
 import SidePanel from "./components/SidePanel"
 import Hamburger from "/src/assets/hamburger.svg?react"
+import MobileHeader from "./components/MobileHeader"
 
 
 function App() {
@@ -41,23 +42,24 @@ function App() {
 
   return (
     <>
+    <MobileHeader setIsSidePanelOpen={setIsSidePanelOpen}/>
     <div className="flex flex-col gap-8 pt-4 p-8 xs:pt-8 lg:w-[calc(100dvw-var(--sidebar-width))] 2xl:h-screen 2xl:min-h-[1120px]" >
-      <div className="flex gap-8">
-        <div className="flex gap-4">
+      <div className="flex flex-col gap-4 xs:flex-row xs:gap-8">
+        <div className="flex flex-col md:flex-row gap-2 md:gap-4">
           <h1 className="text-2xl font-semibold">Ubicación: </h1>
             <LocationDropdown location={location} setLocation={setLocation} />
          </div>
-         <div className="flex gap-4">
-          <h1 className="text-2xl font-semibold">Tipo de mapa: </h1>
+         <div className="flex flex-col md:flex-row gap-2 md:gap-4">
+          <h1 className="text-2xl font-semibold whitespace-nowrap">Tipo de mapa: </h1>
            <MapTypeDropdown mapType={mapType} setMapType={setMapType} />
           </div>
-          <button onClick={() => setIsSidePanelOpen(true)} >
-         <Hamburger className="size-8 invert ml-auto lg:hidden" />
+          <button className="hidden xs:block" onClick={() => setIsSidePanelOpen(true)} >
+         <Hamburger className="size-6 invert ml-auto lg:hidden" />
         </button>
        </div>
     
     <div className="grid grid-cols-1 2xl:flex-1 2xl:min-h-0 md:grid-cols-2 2xl:grid-cols-4 2xl:grid-rows-4 gap-4">
-    <div className="relative h-120 2xl:h-auto col-span-1 md:col-span-2 2xl:col-span-4 2xl:row-span-2 order-1">
+    <div className="relative mb-4 h-120 2xl:h-auto col-span-1 md:col-span-2 2xl:col-span-4 2xl:row-span-2 order-1">
        <Map coords={coords} onMapClick={onMapClick} mapType={mapType} />
        <MapLegend mapType={mapType} />
     </div>

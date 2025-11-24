@@ -11,8 +11,8 @@ function MapLegend({mapType}: Props) {
 
 
   return (
-    <div className="absolute top-4 right-4 z-1000 w-96 rounded-xl
-     shadow-lg p-4 bg-background/50 border border-accent/70 flex flex-col gap-4  ">
+    <div className="absolute top-4 right-4 z-1000 w-48 xs:w-96 rounded-xl shadow-lg p-4 bg-background/50 
+    border border-accent/70 flex flex-col gap-4">
         <h3 className="text-sm font-semibold text-foreground">{data.title}</h3>
         <div 
         className="w-full h-6 rounded-xl border border-accent/70 "
