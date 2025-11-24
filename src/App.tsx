@@ -25,7 +25,7 @@ function App() {
 
     const [location,setLocation] = useState<string>("Habana")
     const [mapType,setMapType] = useState<string>("clouds_new")
-    const [isSidePanelOpen, setIsSidePanelOpen] = useState(true)
+    const [isSidePanelOpen, setIsSidePanelOpen] = useState(() => window.innerWidth >= 1024)
 
     const {data: geocodeData } = useQuery({
       queryKey: ['geocode', location],
