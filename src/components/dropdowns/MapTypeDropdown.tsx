@@ -6,6 +6,14 @@ type Props = {
   setMapType: Dispatch<SetStateAction<string>>
 }
 
+const mapTypes = [
+  { value: "clouds_new", label: "Nubes" },
+  { value: "precipitation_new", label: "Precipitación" },
+  { value: "pressure_new", label: "Presión" },
+  { value: "wind_new", label: "Viento" },
+  { value: "temp_new", label: "Temperatura" },
+]
+
 export default function MapTypeDropdown({ mapType, setMapType }:Props) {
   return (
     <Select value={mapType} onValueChange={(value) => setMapType(value)} >
@@ -13,20 +21,13 @@ export default function MapTypeDropdown({ mapType, setMapType }:Props) {
         <SelectValue placeholder="ubicación" />
       </SelectTrigger>
       <SelectContent className="z-1000" >
-        {types.map(type => (
-            <SelectItem key={type} value={type} className="capitalize" >
-              {type.split('_')[0]}
-            </SelectItem>
+        {mapTypes.map((type) => (
+          
+          <SelectItem key={type.value} value={type.value}>
+            {type.label}
+          </SelectItem>
         ))}
       </SelectContent>
     </Select>
   )
 }
-
-const types = [
-  "clouds_new",
-  "precipitation_new",
-  "pressure_new",
-  "wind_new",
-  "temp_new",
-]

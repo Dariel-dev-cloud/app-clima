@@ -3,9 +3,20 @@ import 'leaflet/dist/leaflet.css';
 import type { Coords } from "../types";
 import { useEffect } from "react";
 import { MaptilerLayer } from "@maptiler/leaflet-maptilersdk";
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+import L from 'leaflet';
 
 const API_KEY = import.meta.env.VITE_API_KEY
 const TILE_LAYER = import.meta.env.VITE_TILE_LAYER
+
+const DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41]
+});
+L.Marker.prototype.options.icon = DefaultIcon;
 
 type Props = {
  coords: Coords
