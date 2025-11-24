@@ -13,7 +13,7 @@ type ThemeContextType = {
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
 
-export default function ThemeProvider({ children }: Props) {
+export  function ThemeProvider({ children }: Props) {
   const [theme, setTheme] = useState<Theme>("dark")
 
   const toggleTheme = () => {
@@ -36,6 +36,7 @@ export default function ThemeProvider({ children }: Props) {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useTheme = () => {
   const context = useContext(ThemeContext)
   if (!context) throw new Error("useTheme must be used within a ThemeProvider")
